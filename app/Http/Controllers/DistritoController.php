@@ -58,7 +58,7 @@ class DistritoController extends AppBaseController
 
         $distrito = $this->distritoRepository->create($input);
 
-        Flash::success('Distrito saved successfully.');
+        Flash::success('Distrito añadido.');
 
         return redirect(route('distritos.index'));
     }
@@ -123,7 +123,7 @@ class DistritoController extends AppBaseController
 
         $distrito = $this->distritoRepository->update($request->all(), $id);
 
-        Flash::success('Distrito updated successfully.');
+        Flash::success('Distrito actualizado.');
 
         return redirect(route('distritos.index'));
     }
@@ -149,7 +149,7 @@ class DistritoController extends AppBaseController
 
         $this->distritoRepository->delete($id);
 
-        Flash::success('Distrito deleted successfully.');
+        Flash::success('Distrito eliminado.');
 
         return redirect(route('distritos.index'));
     }
