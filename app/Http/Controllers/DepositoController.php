@@ -8,6 +8,7 @@ use App\Repositories\DepositoRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\DB;
 use Response;
 
 class DepositoController extends AppBaseController
@@ -29,7 +30,13 @@ class DepositoController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $depositos = $this->depositoRepository->all();
+        //$depositos = $this->depositoRepository->all();
+        $depositos = DB::table('depositos')
+            ->join('proyecto', 'depositos.id_proyecto', '=', 'proyecto.id')
+            ->join('gerentes', 'depositos.id_gerente', '=', 'gerentes.id')
+            ->select('depositos.*', 'proyecto.Nombre as proyectonombre' , 'gerentes.nombre as gerentenombre')
+            ->orderByDesc('created_at')
+            ->paginate(31);
 
         return view('depositos.index')
             ->with('depositos', $depositos);
@@ -42,7 +49,9 @@ class DepositoController extends AppBaseController
      */
     public function create()
     {
-        return view('depositos.create');
+        $proyectos = DB::table('proyecto')->select('id', 'nombre')->get();
+        $gerentes = DB::table('gerentes')->select('id', 'nombre')->get();
+        return view('depositos.create')->with("proyectos", $proyectos)->with("gerentes", $gerentes);
     }
 
     /**
@@ -58,7 +67,7 @@ class DepositoController extends AppBaseController
 
         $deposito = $this->depositoRepository->create($input);
 
-        Flash::success('Deposito saved successfully.');
+        Flash::success('Deposito añadido.');
 
         return redirect(route('depositos.index'));
     }
@@ -93,6 +102,8 @@ class DepositoController extends AppBaseController
     public function edit($id)
     {
         $deposito = $this->depositoRepository->find($id);
+        $proyectos = DB::table('proyecto')->select('id', 'nombre')->get();
+        $gerentes = DB::table('gerentes')->select('id', 'nombre')->get();
 
         if (empty($deposito)) {
             Flash::error('Deposito not found');
@@ -100,7 +111,7 @@ class DepositoController extends AppBaseController
             return redirect(route('depositos.index'));
         }
 
-        return view('depositos.edit')->with('deposito', $deposito);
+        return view('depositos.edit')->with('deposito', $deposito)->with("proyectos", $proyectos)->with("gerentes", $gerentes);
     }
 
     /**
@@ -123,7 +134,7 @@ class DepositoController extends AppBaseController
 
         $deposito = $this->depositoRepository->update($request->all(), $id);
 
-        Flash::success('Deposito updated successfully.');
+        Flash::success('Deposito actualizado.');
 
         return redirect(route('depositos.index'));
     }
@@ -149,7 +160,7 @@ class DepositoController extends AppBaseController
 
         $this->depositoRepository->delete($id);
 
-        Flash::success('Deposito deleted successfully.');
+        Flash::success('Deposito eliminado.');
 
         return redirect(route('depositos.index'));
     }
