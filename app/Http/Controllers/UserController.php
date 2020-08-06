@@ -61,7 +61,7 @@ class UserController extends AppBaseController
         $input['password'] = Hash::make($input['password']);
         $user = $this->userRepository->create($input);
 
-        Flash::success('User saved successfully.');
+        Flash::success('Usuario añadido.');
 
         return redirect(route('users.index'));
     }
@@ -177,7 +177,7 @@ class UserController extends AppBaseController
 
         $this->userRepository->delete($id);
 
-        Flash::success('User deleted successfully.');
+        Flash::success('Usuario eliminado.');
 
         return redirect(route('users.index'));
     }

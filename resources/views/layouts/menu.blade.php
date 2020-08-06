@@ -14,9 +14,9 @@
     <a href="{{ route('proyectos.index') }}"><i class="fa fa-edit"></i><span>Proyectos</span></a>
 </li>
 
-<li class="{{ Request::is('rols*') ? 'active' : '' }}">
+<!--<li class="{{ Request::is('rols*') ? 'active' : '' }}">
     <a href="{{ route('rols.index') }}"><i class="fa fa-edit"></i><span>Rols</span></a>
-</li>
+</li>-->
 
 <li class="{{ Request::is('users*') ? 'active' : '' }}">
     <a href="{{ route('users.index') }}"><i class="fa fa-edit"></i><span>Users</span></a>
