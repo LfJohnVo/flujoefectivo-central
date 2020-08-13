@@ -1,3 +1,7 @@
+<li class="{{ Request::is('/home') ? 'active' : '' }}">
+    <a href="{{ url('/home') }}"><i class="fa fa-edit"></i><span>Totales</span></a>
+</li>
+
 <li class="{{ Request::is('depositos*') ? 'active' : '' }}">
     <a href="{{ route('depositos.index') }}"><i class="fa fa-edit"></i><span>Depositos</span></a>
 </li>
