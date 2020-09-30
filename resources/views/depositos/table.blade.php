@@ -16,11 +16,11 @@
         <tbody>
         @foreach($depositos as $deposito)
             <tr>
-                <td>{{ $deposito->fecha_deposito }}</td>
+                <td>{{ date('d-m-Y', strtotime($deposito->fecha_deposito)) }}</td>
                 <td>{{ $deposito->tipo_traslado }}</td>
                 <td>{{ $deposito->ingreso_dep_central }}</td>
                 <td>{{ $deposito->ingreso_dep_cliente }}</td>
-                <td>{{ $deposito->fecha_venta }}</td>
+                <td>{{ date('d-m-Y', strtotime($deposito->fecha_venta)) }}</td>
                 <td>{{ $deposito->folios_traslado }}</td>
                 <td>{{ $deposito->proyectonombre }}</td>
                 <td>{{ $deposito->gerentenombre }}</td>
