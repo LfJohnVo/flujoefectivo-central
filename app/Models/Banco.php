@@ -18,9 +18,9 @@ class Banco extends Model
 {
 
     public $table = 'cat_bancos';
-    
+
     const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
+    const UPDATED_AT = 'update_at';
 
 
 

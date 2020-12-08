@@ -58,7 +58,7 @@ class BancoController extends AppBaseController
 
         $banco = $this->bancoRepository->create($input);
 
-        Flash::success('Banco saved successfully.');
+        Flash::success('Banco añadido.');
 
         return redirect(route('bancos.index'));
     }
@@ -123,7 +123,7 @@ class BancoController extends AppBaseController
 
         $banco = $this->bancoRepository->update($request->all(), $id);
 
-        Flash::success('Banco updated successfully.');
+        Flash::success('Banco actualizado.');
 
         return redirect(route('bancos.index'));
     }
@@ -149,7 +149,7 @@ class BancoController extends AppBaseController
 
         $this->bancoRepository->delete($id);
 
-        Flash::success('Banco deleted successfully.');
+        Flash::success('Banco eliminado.');
 
         return redirect(route('bancos.index'));
     }
