@@ -8,11 +8,11 @@
         <th>Ingreso Dep Cliente</th>
         <th>Fecha Venta</th>
         <th>Folios Traslado</th>
-        <th>Id Proyecto</th>
-        <th>Id Gerente</th>
-        <th>Id Bancos</th>
+        <th>Proyecto</th>
+        <th>Gerente</th>
+        <th>Banco</th>
         <th>Archivo Pago</th>
-                <th colspan="3">Action</th>
+                <th colspan="3">Accion</th>
             </tr>
         </thead>
         <tbody>
@@ -31,7 +31,7 @@
                 <td>
                     {!! Form::open(['route' => ['depositos.destroy', $deposito->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('depositos.show', [$deposito->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                        <!--<a href="{{ route('depositos.show', [$deposito->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>-->
                         <a href="{{ route('depositos.edit', [$deposito->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>

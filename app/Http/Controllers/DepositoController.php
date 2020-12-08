@@ -6,6 +6,9 @@ use App\Http\Requests\CreateDepositoRequest;
 use App\Http\Requests\UpdateDepositoRequest;
 use App\Repositories\DepositoRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Banco;
+use App\Models\Gerente;
+use App\Models\Proyecto;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -42,7 +45,11 @@ class DepositoController extends AppBaseController
      */
     public function create()
     {
-        return view('depositos.create');
+        $bancos = Banco::all();
+        $gerentes = Gerente::all();
+        $proyecto = Proyecto::all();
+
+        return view('depositos.create')->with('bancos', $bancos)->with('gerentes', $gerentes)->with('proyectos', $proyecto);
     }
 
     /**
@@ -58,7 +65,7 @@ class DepositoController extends AppBaseController
 
         $deposito = $this->depositoRepository->create($input);
 
-        Flash::success('Deposito saved successfully.');
+        Flash::success('Deposito añadido.');
 
         return redirect(route('depositos.index'));
     }
@@ -100,7 +107,11 @@ class DepositoController extends AppBaseController
             return redirect(route('depositos.index'));
         }
 
-        return view('depositos.edit')->with('deposito', $deposito);
+        $bancos = Banco::all();
+        $gerentes = Gerente::all();
+        $proyecto = Proyecto::all();
+
+        return view('depositos.edit')->with('deposito', $deposito)->with('bancos', $bancos)->with('gerentes', $gerentes)->with('proyectos', $proyecto);;
     }
 
     /**
@@ -123,7 +134,7 @@ class DepositoController extends AppBaseController
 
         $deposito = $this->depositoRepository->update($request->all(), $id);
 
-        Flash::success('Deposito updated successfully.');
+        Flash::success('Deposito actualizado.');
 
         return redirect(route('depositos.index'));
     }
@@ -149,7 +160,7 @@ class DepositoController extends AppBaseController
 
         $this->depositoRepository->delete($id);
 
-        Flash::success('Deposito deleted successfully.');
+        Flash::success('Deposito eliminado.');
 
         return redirect(route('depositos.index'));
     }
