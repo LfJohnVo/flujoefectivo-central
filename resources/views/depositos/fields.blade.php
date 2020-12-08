@@ -56,29 +56,30 @@
 
 <!-- Id Proyecto Field -->
 <div class="form-group col-sm-6">
-    <label for="sel1">Proyectos:</label>
-    <select class="form-control" id="sel1" name="id_proyecto">
-        <option value="">Seleccione una opcion</option>
-        @foreach($proyectos as $proyecto)
-            <option value="{!! $proyecto->id !!}">{!! $proyecto->nombre !!}</option>
-        @endforeach
-    </select>
+    {!! Form::label('id_proyecto', 'Id Proyecto:') !!}
+    {!! Form::number('id_proyecto', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Id Gerente Field -->
 <div class="form-group col-sm-6">
-    <label for="sel2">Gerente:</label>
-    <select class="form-control" id="sel2" name="id_gerente">
-        <option value="">Seleccione una opcion</option>
-        @foreach($gerentes as $gerente)
-            <option value="{!! $gerente->id !!}">{!! $gerente->nombre !!}</option>
-        @endforeach
-    </select>
+    {!! Form::label('id_gerente', 'Id Gerente:') !!}
+    {!! Form::number('id_gerente', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Id Bancos Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('id_bancos', 'Id Bancos:') !!}
+    {!! Form::number('id_bancos', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Archivo Pago Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('archivo_pago', 'Archivo Pago:') !!}
+    {!! Form::text('archivo_pago', null, ['class' => 'form-control','maxlength' => 65535,'maxlength' => 65535]) !!}
+</div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Enviar', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('depositos.index') }}" class="btn btn-default">Cancelar</a>
+    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+    <a href="{{ route('depositos.index') }}" class="btn btn-default">Cancel</a>
 </div>

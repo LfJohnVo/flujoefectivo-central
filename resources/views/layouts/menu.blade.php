@@ -26,3 +26,11 @@
     <a href="{{ route('users.index') }}"><i class="fa fa-edit"></i><span>Usuarios</span></a>
 </li>
 
+<li class="{{ Request::is('bancos*') ? 'active' : '' }}">
+    <a href="{{ route('bancos.index') }}"><i class="fa fa-edit"></i><span>Bancos</span></a>
+</li>
+
+<li class="{{ Request::is('distritals*') ? 'active' : '' }}">
+    <a href="{{ route('distritals.index') }}"><i class="fa fa-edit"></i><span>Distritals</span></a>
+</li>
+

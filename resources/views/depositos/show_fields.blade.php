@@ -46,3 +46,15 @@
     <p>{{ $deposito->id_gerente }}</p>
 </div>
 
+<!-- Id Bancos Field -->
+<div class="form-group">
+    {!! Form::label('id_bancos', 'Id Bancos:') !!}
+    <p>{{ $deposito->id_bancos }}</p>
+</div>
+
+<!-- Archivo Pago Field -->
+<div class="form-group">
+    {!! Form::label('archivo_pago', 'Archivo Pago:') !!}
+    <p>{{ $deposito->archivo_pago }}</p>
+</div>
+

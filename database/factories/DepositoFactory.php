@@ -15,6 +15,10 @@ $factory->define(Deposito::class, function (Faker $faker) {
         'fecha_venta' => $faker->date('Y-m-d H:i:s'),
         'folios_traslado' => $faker->word,
         'id_proyecto' => $faker->word,
-        'id_gerente' => $faker->word
+        'id_gerente' => $faker->word,
+        'created_at' => $faker->date('Y-m-d H:i:s'),
+        'updated_at' => $faker->date('Y-m-d H:i:s'),
+        'id_bancos' => $faker->randomDigitNotNull,
+        'archivo_pago' => $faker->word
     ];
 });

@@ -7,10 +7,11 @@ use Eloquent as Model;
 /**
  * Class Deposito
  * @package App\Models
- * @version August 6, 2020, 6:39 am UTC
+ * @version December 8, 2020, 4:03 am UTC
  *
  * @property \App\Models\Gerente $idGerente
  * @property \App\Models\Proyecto $idProyecto
+ * @property \App\Models\CatBanco $idBancos
  * @property string|\Carbon\Carbon $fecha_deposito
  * @property string $tipo_traslado
  * @property number $ingreso_dep_central
@@ -19,6 +20,8 @@ use Eloquent as Model;
  * @property string $folios_traslado
  * @property integer $id_proyecto
  * @property integer $id_gerente
+ * @property integer $id_bancos
+ * @property string $archivo_pago
  */
 class Deposito extends Model
 {
@@ -39,7 +42,9 @@ class Deposito extends Model
         'fecha_venta',
         'folios_traslado',
         'id_proyecto',
-        'id_gerente'
+        'id_gerente',
+        'id_bancos',
+        'archivo_pago'
     ];
 
     /**
@@ -56,7 +61,9 @@ class Deposito extends Model
         'fecha_venta' => 'datetime',
         'folios_traslado' => 'string',
         'id_proyecto' => 'integer',
-        'id_gerente' => 'integer'
+        'id_gerente' => 'integer',
+        'id_bancos' => 'integer',
+        'archivo_pago' => 'string'
     ];
 
     /**
@@ -72,7 +79,11 @@ class Deposito extends Model
         'fecha_venta' => 'nullable',
         'folios_traslado' => 'nullable|string|max:255',
         'id_proyecto' => 'required',
-        'id_gerente' => 'required'
+        'id_gerente' => 'required',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable',
+        'id_bancos' => 'nullable|integer',
+        'archivo_pago' => 'nullable|string|max:65535'
     ];
 
     /**
@@ -89,5 +100,13 @@ class Deposito extends Model
     public function idProyecto()
     {
         return $this->belongsTo(\App\Models\Proyecto::class, 'id_proyecto');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function idBancos()
+    {
+        return $this->belongsTo(\App\Models\CatBanco::class, 'id_bancos');
     }
 }

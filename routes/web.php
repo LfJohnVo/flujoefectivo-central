@@ -29,3 +29,8 @@ Route::group(['middleware' => 'auth'],function (){
 
     Route::resource('users', 'UserController');
 });
+
+
+Route::resource('bancos', 'BancoController');
+
+Route::resource('distritals', 'distritalController');

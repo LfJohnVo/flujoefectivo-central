@@ -2,31 +2,24 @@
 
 namespace App\Repositories;
 
-use App\Models\Deposito;
+use App\Models\Banco;
 use App\Repositories\BaseRepository;
 
 /**
- * Class DepositoRepository
+ * Class BancoRepository
  * @package App\Repositories
- * @version December 8, 2020, 4:03 am UTC
+ * @version December 8, 2020, 4:09 am UTC
 */
 
-class DepositoRepository extends BaseRepository
+class BancoRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'fecha_deposito',
-        'tipo_traslado',
-        'ingreso_dep_central',
-        'ingreso_dep_cliente',
-        'fecha_venta',
-        'folios_traslado',
-        'id_proyecto',
-        'id_gerente',
-        'id_bancos',
-        'archivo_pago'
+        'nombre',
+        'estatus',
+        'update_at'
     ];
 
     /**
@@ -44,6 +37,6 @@ class DepositoRepository extends BaseRepository
      **/
     public function model()
     {
-        return Deposito::class;
+        return Banco::class;
     }
 }
