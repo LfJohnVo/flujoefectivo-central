@@ -18,7 +18,7 @@ class distrital extends Model
 {
 
     public $table = 'distritales';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -51,13 +51,13 @@ class distrital extends Model
      * @var array
      */
     public static $rules = [
-        'nombre' => 'nullable|string|max:50',
+        'nombre' => 'required|string|max:50',
         'clave_distrito' => 'nullable|string|max:20',
         'id_regional' => 'nullable|integer',
-        'created_at' => 'required',
-        'updated_at' => 'required',
+        'created_at' => 'nullable',
+        'updated_at' => 'nullable',
         'estatus' => 'nullable|string|max:1'
     ];
 
-    
+
 }

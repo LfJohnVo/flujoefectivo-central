@@ -31,6 +31,6 @@
 </li>
 
 <li class="{{ Request::is('distritals*') ? 'active' : '' }}">
-    <a href="{{ route('distritals.index') }}"><i class="fa fa-edit"></i><span>Distritals</span></a>
+    <a href="{{ route('distritals.index') }}"><i class="fa fa-edit"></i><span>Distritales</span></a>
 </li>
 

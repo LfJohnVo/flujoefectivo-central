@@ -6,6 +6,8 @@ use App\Http\Requests\CreatedistritalRequest;
 use App\Http\Requests\UpdatedistritalRequest;
 use App\Repositories\distritalRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\distrital;
+use App\Models\Distrito;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -42,7 +44,9 @@ class distritalController extends AppBaseController
      */
     public function create()
     {
-        return view('distritals.create');
+        $distrito = Distrito::all();
+        //dd($distrito);
+        return view('distritals.create')->with('distritos', $distrito);
     }
 
     /**
@@ -58,7 +62,7 @@ class distritalController extends AppBaseController
 
         $distrital = $this->distritalRepository->create($input);
 
-        Flash::success('Distrital saved successfully.');
+        Flash::success('Distrital añadido.');
 
         return redirect(route('distritals.index'));
     }
@@ -100,7 +104,9 @@ class distritalController extends AppBaseController
             return redirect(route('distritals.index'));
         }
 
-        return view('distritals.edit')->with('distrital', $distrital);
+        $distrito = Distrito::all();
+
+        return view('distritals.edit')->with('distrital', $distrital)->with('distritos', $distrito);
     }
 
     /**
@@ -123,7 +129,7 @@ class distritalController extends AppBaseController
 
         $distrital = $this->distritalRepository->update($request->all(), $id);
 
-        Flash::success('Distrital updated successfully.');
+        Flash::success('Distrital actualizado.');
 
         return redirect(route('distritals.index'));
     }
@@ -149,7 +155,7 @@ class distritalController extends AppBaseController
 
         $this->distritalRepository->delete($id);
 
-        Flash::success('Distrital deleted successfully.');
+        Flash::success('Distrital eliminado.');
 
         return redirect(route('distritals.index'));
     }
