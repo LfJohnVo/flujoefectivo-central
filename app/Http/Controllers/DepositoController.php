@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateDepositoRequest;
 use App\Http\Requests\UpdateDepositoRequest;
+use App\Models\Deposito;
 use App\Repositories\DepositoRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Banco;
@@ -59,9 +60,20 @@ class DepositoController extends AppBaseController
      *
      * @return Response
      */
-    public function store(CreateDepositoRequest $request)
+    public function store()
     {
-        $input = $request->all();
+        $input = request()->all();
+
+        $img = '';
+        $foto = request()->file('archivo_pago');
+        if ($foto != null) {
+            $dataImg = $foto->get();
+            $nombre_archivo = $foto->getBasename();
+            $im = file_get_contents($foto);
+            $imdata = base64_encode($im);
+            $input['archivo_pago'] = $imdata;
+            //$deposito = $this->depositoRepository->create($input);
+        }
 
         $deposito = $this->depositoRepository->create($input);
 
@@ -163,5 +175,34 @@ class DepositoController extends AppBaseController
         Flash::success('Deposito eliminado.');
 
         return redirect(route('depositos.index'));
+    }
+
+    public function DownloadImg($id){
+        $imagen = Deposito::find($id);
+        //dd($imagen);
+        $bin = base64_decode($imagen->archivo_pago);
+        $path = "foto/" . $id.'-'.$imagen->created_at. ".jpeg";
+        //dd($path);
+        // Obtain the original content (usually binary data)
+        // Load GD resource from binary data
+        $im = imageCreateFromString($bin);
+        //dd($im);
+        // Make sure that the GD library was able to load the image
+        // This is important, because you should not miss corrupted or unsupported images
+        if (!$im) {
+            die('Base64 value is not a valid image');
+        }
+
+        file_put_contents($path, $bin);
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="'.basename($path).'"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($path));
+        flush(); // Flush system output buffer
+        readfile($path);
+        unlink($path);
     }
 }

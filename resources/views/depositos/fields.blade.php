@@ -83,9 +83,16 @@
 
 <!-- Archivo Pago Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('archivo_pago', 'Archivo Pago:') !!}
-    {!! Form::text('archivo_pago', null, ['class' => 'form-control','maxlength' => 65535,'maxlength' => 65535]) !!}
+    <div class="input-group-prepend">
+        <span class="input-group-text">Subir imagen</span>
+    </div>
+    <div class="custom-file">
+        <input type="file" accept="image/*" name="archivo_pago" class="custom-file-input" id="inputGroupFile01">
+        <label class="custom-file-label" for="inputGroupFile01">Elija su archivo</label>
+    </div>
 </div>
+
+
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

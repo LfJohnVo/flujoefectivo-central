@@ -28,9 +28,11 @@ Route::group(['middleware' => 'auth'],function (){
     Route::resource('rols', 'RolController');
 
     Route::resource('users', 'UserController');
+
+    Route::resource('bancos', 'BancoController');
+
+    Route::resource('distritals', 'distritalController');
+
+    Route::get('/img/{id}', 'DepositoController@DownloadImg')->name('img');
+
 });
-
-
-Route::resource('bancos', 'BancoController');
-
-Route::resource('distritals', 'distritalController');
