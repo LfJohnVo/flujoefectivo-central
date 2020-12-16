@@ -87,7 +87,7 @@
         <span class="input-group-text">Subir imagen</span>
     </div>
     <div class="custom-file">
-        <input type="file" accept="image/*" name="archivo_pago" class="custom-file-input" id="inputGroupFile01">
+        <input type="file" accept="image/jpeg" name="archivo_pago" class="custom-file-input" id="inputGroupFile01">
         <label class="custom-file-label" for="inputGroupFile01">Elija su archivo</label>
     </div>
 </div>

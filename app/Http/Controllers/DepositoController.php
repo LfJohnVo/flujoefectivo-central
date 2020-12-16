@@ -134,8 +134,10 @@ class DepositoController extends AppBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateDepositoRequest $request)
+    public function update($id)
     {
+        $input = request()->all();
+
         $deposito = $this->depositoRepository->find($id);
 
         if (empty($deposito)) {
@@ -144,7 +146,23 @@ class DepositoController extends AppBaseController
             return redirect(route('depositos.index'));
         }
 
-        $deposito = $this->depositoRepository->update($request->all(), $id);
+        $img = '';
+        $foto = request()->file('archivo_pago');
+        //dd($foto);
+        if ($foto != null) {
+            $dataImg = $foto->get();
+            $nombre_archivo = $foto->getBasename();
+            $im = file_get_contents($foto);
+            $imdata = base64_encode($im);
+            $input['archivo_pago'] = $imdata;
+
+            //$imagDep = Deposito::find();
+
+        }
+
+        //dd($imagDep);
+
+        $deposito = $this->depositoRepository->update($input, $id);
 
         Flash::success('Deposito actualizado.');
 
