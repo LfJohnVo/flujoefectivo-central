@@ -34,3 +34,7 @@
     <a href="{{ route('distritals.index') }}"><i class="fa fa-edit"></i><span>Distritales</span></a>
 </li>
 
+<li class="{{ Request::is('tipoDepositos*') ? 'active' : '' }}">
+    <a href="{{ route('tipoDepositos.index') }}"><i class="fa fa-edit"></i><span>Tipo Depositos</span></a>
+</li>
+

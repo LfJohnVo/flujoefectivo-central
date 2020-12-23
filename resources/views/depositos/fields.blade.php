@@ -16,8 +16,12 @@
 
 <!-- Tipo Traslado Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('tipo_traslado', 'Tipo Traslado:') !!}
-    {!! Form::text('tipo_traslado', null, ['class' => 'form-control','maxlength' => 50,'maxlength' => 50]) !!}
+    <label for="exampleFormControlSelect1">Tipo traslado:</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="tipo_traslado">
+        @foreach($tdepositos as $tdeposito)
+            <option value="{{$tdeposito->tipo}}">{{$tdeposito->tipo}}</option>
+        @endforeach
+    </select>
 </div>
 
 <!-- Ingreso Dep Central Field -->

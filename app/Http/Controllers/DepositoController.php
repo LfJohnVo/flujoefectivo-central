@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateDepositoRequest;
 use App\Http\Requests\UpdateDepositoRequest;
 use App\Models\Deposito;
+use App\Models\TipoDeposito;
 use App\Repositories\DepositoRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Banco;
@@ -49,8 +50,9 @@ class DepositoController extends AppBaseController
         $bancos = Banco::all();
         $gerentes = Gerente::all();
         $proyecto = Proyecto::all();
+        $tdeposito = TipoDeposito::all();
 
-        return view('depositos.create')->with('bancos', $bancos)->with('gerentes', $gerentes)->with('proyectos', $proyecto);
+        return view('depositos.create')->with('bancos', $bancos)->with('gerentes', $gerentes)->with('proyectos', $proyecto)->with('tdepositos', $tdeposito);
     }
 
     /**
@@ -122,8 +124,9 @@ class DepositoController extends AppBaseController
         $bancos = Banco::all();
         $gerentes = Gerente::all();
         $proyecto = Proyecto::all();
+        $tdeposito = TipoDeposito::all();
 
-        return view('depositos.edit')->with('deposito', $deposito)->with('bancos', $bancos)->with('gerentes', $gerentes)->with('proyectos', $proyecto);;
+        return view('depositos.edit')->with('deposito', $deposito)->with('bancos', $bancos)->with('gerentes', $gerentes)->with('proyectos', $proyecto)->with('tdepositos', $tdeposito);
     }
 
     /**
