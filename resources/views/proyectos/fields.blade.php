@@ -10,15 +10,6 @@
     {!! Form::text('Nombre', null, ['class' => 'form-control','maxlength' => 255,'maxlength' => 255, 'required']) !!}
 </div>
 
-<div class="form-group col-sm-6">
-    <label for="sel1">Distrito:</label>
-    <select class="form-control" id="sel1" name="id_distrito">
-        <option value="">Seleccione una opcion</option>
-        @foreach($regiones as $region)
-            <option value="{!! $region->id !!}">{!! $region->identificador !!}/{!! $region->distrito !!}</option>
-        @endforeach
-    </select>
-</div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

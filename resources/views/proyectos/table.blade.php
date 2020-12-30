@@ -4,7 +4,6 @@
         <tr>
             <th>No Proyecto</th>
             <th>Nombre</th>
-            <th>Distrito</th>
             <th colspan="3">Acción</th>
         </tr>
         </thead>
@@ -13,7 +12,7 @@
             <tr>
                 <td>{{ $proyecto->no_proyecto }}</td>
                 <td>{{ $proyecto->Nombre }}</td>
-                <td>{{ $proyecto->distritoname }}/{{$proyecto->distritoidenti}}</td>
+
                 <td>
                     {!! Form::open(['route' => ['proyectos.destroy', $proyecto->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

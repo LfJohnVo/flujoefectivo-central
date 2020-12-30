@@ -30,11 +30,11 @@ class ProyectoController extends AppBaseController
      */
     public function index(Request $request)
     {
-        //$proyectos = $this->proyectoRepository->all();
-        $proyectos = DB::table('proyecto')
+        $proyectos = $this->proyectoRepository->all();
+        /*$proyectos = DB::table('proyecto')
             ->join('distritos', 'proyecto.id_distrito', '=', 'distritos.id')
             ->select('proyecto.id','proyecto.no_proyecto', 'proyecto.Nombre' , 'distritos.distrito as distritoname', 'distritos.identificador as distritoidenti')
-            ->paginate(50);
+            ->paginate(50);*/
 
         return view('proyectos.index')
             ->with('proyectos', $proyectos);
@@ -47,8 +47,8 @@ class ProyectoController extends AppBaseController
      */
     public function create()
     {
-        $region = DB::table('distritos')->select('id', 'distrito', 'identificador')->get();
-        return view('proyectos.create')->with("regiones", $region);
+        //$region = DB::table('distritos')->select('id', 'distrito', 'identificador')->get();
+        return view('proyectos.create');
     }
 
     /**
@@ -106,9 +106,9 @@ class ProyectoController extends AppBaseController
             return redirect(route('proyectos.index'));
         }
 
-        $region = DB::table('distritos')->select('id', 'distrito', 'identificador')->get();
+        //$region = DB::table('distritos')->select('id', 'distrito', 'identificador')->get();
 
-        return view('proyectos.edit')->with('proyecto', $proyecto)->with("regiones", $region);
+        return view('proyectos.edit')->with('proyecto', $proyecto);
     }
 
     /**
