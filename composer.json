@@ -9,14 +9,20 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "doctrine/dbal": "~2.3",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
+        "infyomlabs/adminlte-templates": "7.0.x-dev",
+        "infyomlabs/laravel-generator": "7.0.x-dev",
+        "laracasts/flash": "^3.1",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
+        "laravel/ui": "^2.1",
+        "laravelcollective/html": "^6.1",
+        "laraveles/spanish": "^1.5",
         "phpmailer/phpmailer": "^6.1",
-        "laracasts/flash": "^3.1",
-
+        "ext-gd": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

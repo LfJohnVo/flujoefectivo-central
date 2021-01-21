@@ -13,6 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'Auth\LoginController@showLoginForm');
+Auth::Routes();
+Route::group(['middleware' => 'auth'],function (){
+    Route::get('/home', 'HomeController@index')->middleware('verified');
+    Route::resource('depositos', 'DepositoController');
+
+    Route::resource('distritos', 'DistritoController');
+
+    Route::resource('gerentes', 'GerenteController');
+
+    Route::resource('proyectos', 'ProyectoController');
+
+    Route::resource('rols', 'RolController');
+
+    Route::resource('users', 'UserController');
+
+    Route::resource('bancos', 'BancoController');
+
+    Route::resource('distritals', 'distritalController');
+
+    Route::get('/img/{id}', 'DepositoController@DownloadImg')->name('img');
+
+    Route::resource('tipoDepositos', 'TipoDepositoController');
 });
+
