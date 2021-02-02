@@ -202,7 +202,7 @@ class DepositoController extends AppBaseController
         $imagen = Deposito::find($id);
         //dd($imagen);
         $bin = base64_decode($imagen->archivo_pago);
-        $path = "foto/" . $id.'-'.$imagen->created_at. ".jpeg";
+        $path = "foto/" . $id . '-' . $imagen->created_at->toDateString() . ".jpeg";
         //dd($path);
         // Obtain the original content (usually binary data)
         // Load GD resource from binary data
