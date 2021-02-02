@@ -29,9 +29,9 @@
                 <td>{{ $deposito->id_bancos }}</td>
                 <td>
                     @if($deposito->archivo_pago)
-                    <a href="{!! route('img', [$deposito->id]) !!}"
+                        <a href="{!! route('img', [$deposito->id]) !!}"
                            class='btn-floating btn-sm btn-blue-grey'>Descargar</a>
-                @else
+                    @else
                         Sin archivo
                     @endif
                 </td>
