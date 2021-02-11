@@ -36,5 +36,7 @@ Route::group(['middleware' => 'auth'],function (){
     Route::get('/img/{id}', 'DepositoController@DownloadImg')->name('img');
 
     Route::resource('tipoDepositos', 'TipoDepositoController');
+
+    Route::post('/reporte', 'HomeController@export')->name('reporte');
 });
 
