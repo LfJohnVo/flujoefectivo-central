@@ -20,8 +20,10 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.1",
         "laravelcollective/html": "^6.1",
+        "maatwebsite/excel": "^3.1",
         "laraveles/spanish": "^1.5",
         "phpmailer/phpmailer": "^6.1",
+        "phpoffice/phpspreadsheet": "^1.14",
         "ext-gd": "*"
     },
     "require-dev": {
